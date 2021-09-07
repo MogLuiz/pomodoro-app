@@ -32,6 +32,20 @@ export function PomodoroTimer(props: IProps): JSX.Element {
   const configureWork = () => {
     setTimeCounting(true);
     setWorking(true);
+    setResting(false);
+    setMainTime(props.pomodoroTime);
+  };
+
+  const configureRest = (long: boolean) => {
+    setTimeCounting(true);
+    setWorking(false);
+    setResting(true);
+
+    if (long) {
+      setMainTime(props.longRestTime);
+    } else {
+      setMainTime(props.shortRestTime);
+    }
   };
 
   return (
@@ -41,7 +55,9 @@ export function PomodoroTimer(props: IProps): JSX.Element {
 
       <div className="controls">
         <Button text="Work" onClick={() => configureWork()} />
-        <Button text="teste" />
+
+        <Button text="Rest" onClick={() => configureRest(false)} />
+
         <Button
           text={timeCounting ? "Pause" : "Play"}
           onClick={() => setTimeCounting(!timeCounting)}
