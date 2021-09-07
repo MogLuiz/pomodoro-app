@@ -22,13 +22,18 @@ export function PomodoroTimer(props: IProps): JSX.Element {
     timeCounting ? 1000 : null
   );
 
+  const configureWork = () => {
+    setTimeCounting(true);
+    setWorking(true);
+  };
+
   return (
     <div className="pomodoro">
       <h2>You are: working</h2>
       <Timer mainTime={mainTime} />
 
       <div className="controls">
-        <Button text="teste" />
+        <Button text="Work" onClick={() => configureWork()} />
         <Button text="teste" />
         <Button text="teste" />
       </div>
