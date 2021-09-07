@@ -15,10 +15,12 @@ export function PomodoroTimer(props: IProps): JSX.Element {
   const [mainTime, setMainTime] = React.useState(props.pomodoroTime);
   const [timeCounting, setTimeCounting] = React.useState(false);
   const [working, setWorking] = React.useState(false);
+  const [resting, setResting] = React.useState(false);
 
   useEffect(() => {
     if (working) document.body.classList.add("working");
-  }, [working]);
+    if (resting) document.body.classList.remove("working");
+  }, [resting, working]);
 
   useInterval(
     () => {
