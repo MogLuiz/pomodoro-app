@@ -13,6 +13,7 @@ interface IProps {
 export function PomodoroTimer(props: IProps): JSX.Element {
   const [mainTime, setMainTime] = React.useState(props.pomodoroTime);
   const [timeCounting, setTimeCounting] = React.useState(false);
+  const [working, setWorking] = React.useState(false);
 
   useInterval(
     () => {
