@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import { useInterval } from "../hooks/use-interval";
 import { Button } from "./button";
 import { Timer } from "./timer";
@@ -14,6 +15,10 @@ export function PomodoroTimer(props: IProps): JSX.Element {
   const [mainTime, setMainTime] = React.useState(props.pomodoroTime);
   const [timeCounting, setTimeCounting] = React.useState(false);
   const [working, setWorking] = React.useState(false);
+
+  useEffect(() => {
+    if (working) document.body.classList.add("working");
+  }, [working]);
 
   useInterval(
     () => {
