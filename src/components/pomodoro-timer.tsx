@@ -12,10 +12,14 @@ interface IProps {
 
 export function PomodoroTimer(props: IProps): JSX.Element {
   const [mainTime, setMainTime] = React.useState(props.pomodoroTime);
+  const [timeCounting, setTimeCounting] = React.useState(false);
 
-  useInterval(() => {
-    setMainTime(mainTime - 1);
-  }, 1000);
+  useInterval(
+    () => {
+      setMainTime(mainTime - 1);
+    },
+    timeCounting ? 1000 : null
+  );
 
   return (
     <div className="pomodoro">
