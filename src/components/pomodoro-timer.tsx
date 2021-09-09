@@ -16,14 +16,24 @@ export function PomodoroTimer(props: IProps): JSX.Element {
   const [timeCounting, setTimeCounting] = React.useState(false);
   const [working, setWorking] = React.useState(false);
   const [resting, setResting] = React.useState(false);
-  const [cycles, setCycles] = React.useState(
-    new Array(props.cycles).fill(true)
+  const [cyclesQtdManager, setCyclesQtdManager] = React.useState(
+    new Array(props.cycles - 1).fill(true)
   );
 
   useEffect(() => {
     if (working) document.body.classList.add("working");
     if (resting) document.body.classList.remove("working");
-  }, [resting, working]);
+
+    if (mainTime > 0) return;
+
+    if (working && cyclesQtdManager.length > 0) {
+      configureRest(false);
+      cyclesQtdManager.pop();
+    } else if (working && cyclesQtdManager.length <= 0) {
+      configureRest(false);
+      setCyclesQtdManager(new Array(props.cycles - 1).fill(true));
+    }
+  }, [cyclesQtdManager, mainTime, props.cycles, resting, working]);
 
   useInterval(
     () => {
