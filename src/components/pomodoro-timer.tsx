@@ -16,6 +16,9 @@ export function PomodoroTimer(props: IProps): JSX.Element {
   const [timeCounting, setTimeCounting] = React.useState(false);
   const [working, setWorking] = React.useState(false);
   const [resting, setResting] = React.useState(false);
+  const [cycles, setCycles] = React.useState(
+    new Array(props.cycles).fill(true)
+  );
 
   useEffect(() => {
     if (working) document.body.classList.add("working");
