@@ -1,4 +1,4 @@
-export function secondsToTime(seconds: number): string {
+export function secondsToMinutes(seconds: number): string {
 
     const zeroLeft = (n: number) => Math.floor(n).toString().padStart(2, '0')
 
