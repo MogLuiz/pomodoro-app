@@ -1,6 +1,6 @@
 import { zeroLeft } from "./zero-left"
 
-export function secondsToTime(seconds: number): string {
+export function secondsToMinutes(seconds: number): string {
 
     const min = zeroLeft((seconds / 60) % 60)
 
