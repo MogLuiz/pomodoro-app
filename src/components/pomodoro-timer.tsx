@@ -19,6 +19,9 @@ export function PomodoroTimer(props: IProps): JSX.Element {
   const [cyclesQtdManager, setCyclesQtdManager] = React.useState(
     new Array(props.cycles - 1).fill(true)
   );
+  const [completedCycles, setCompletedCycles] = React.useState(0);
+  const [fullWorkingTime, setFullWorkingTime] = React.useState(0);
+  const [numberOfPomodoros, setNumberOfPomodoros] = React.useState(0);
 
   useEffect(() => {
     if (working) document.body.classList.add("working");
@@ -76,6 +79,12 @@ export function PomodoroTimer(props: IProps): JSX.Element {
           text={timeCounting ? "Pause" : "Play"}
           onClick={() => setTimeCounting(!timeCounting)}
         />
+      </div>
+
+      <div className="details">
+        <p>Ciclos concluidos: {completedCycles}</p>
+        <p>Horas trabalhadas: {completedCycles}</p>
+        <p>Pomodoros concluidos: {completedCycles}</p>
       </div>
     </div>
   );
