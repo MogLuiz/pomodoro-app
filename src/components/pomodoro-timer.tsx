@@ -66,6 +66,7 @@ export function PomodoroTimer(props: IProps): JSX.Element {
     } else if (working && cyclesQtdManager.length <= 0) {
       configureRest(true);
       setCyclesQtdManager(new Array(props.cycles - 1).fill(true));
+      setCompletedCycles(completedCycles + 1);
     }
 
     if (working) setNumberOfPomodoros(numberOfPomodoros + 1);
